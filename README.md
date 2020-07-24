@@ -5,7 +5,7 @@
 
 
 
-durafmt is a tiny Go library that formats `time.Duration` strings (and types) into a human readable format.
+Russian version durafmt is a tiny Go library that formats `time.Duration` strings (and types) into a human readable format.
 
 ```
 go get github.com/hako/durafmt

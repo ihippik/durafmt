@@ -10,8 +10,19 @@ import (
 	"time"
 )
 
+const (
+	YearsKey        = "лет"
+	WeeksKey        = "нед."
+	DaysKey         = "дн."
+	HoursKey        = "ч."
+	MinutesKey      = "мин."
+	SecondsKey      = "сек."
+	MillisecondsKey = "млс."
+	MicrosecondsKey = "мкс."
+)
+
 var (
-	units      = []string{"лет", "недель", "дней", "часов", "минут", "секунд", "миллисекунд", "микросекунд"}
+	units      = []string{YearsKey, WeeksKey, DaysKey, HoursKey, MinutesKey, SecondsKey, MillisecondsKey, MicrosecondsKey}
 	unitsShort = []string{"л", "н", "в", "ч", "м", "с", "мс", "мкс"}
 )
 
@@ -106,43 +117,43 @@ func (d *Durafmt) String() string {
 		shouldConvert = true
 	}
 
-	if d.limitUnit == "years" || shouldConvert {
+	if d.limitUnit == YearsKey || shouldConvert {
 		years = remainingSecondsToConvert / (365 * 24 * 3600 * 1000000)
 		remainingSecondsToConvert -= years * 365 * 24 * 3600 * 1000000
 		shouldConvert = true
 	}
 
-	if d.limitUnit == "weeks" || shouldConvert {
+	if d.limitUnit == WeeksKey || shouldConvert {
 		weeks = remainingSecondsToConvert / (7 * 24 * 3600 * 1000000)
 		remainingSecondsToConvert -= weeks * 7 * 24 * 3600 * 1000000
 		shouldConvert = true
 	}
 
-	if d.limitUnit == "days" || shouldConvert {
+	if d.limitUnit == DaysKey || shouldConvert {
 		days = remainingSecondsToConvert / (24 * 3600 * 1000000)
 		remainingSecondsToConvert -= days * 24 * 3600 * 1000000
 		shouldConvert = true
 	}
 
-	if d.limitUnit == "hours" || shouldConvert {
+	if d.limitUnit == HoursKey || shouldConvert {
 		hours = remainingSecondsToConvert / (3600 * 1000000)
 		remainingSecondsToConvert -= hours * 3600 * 1000000
 		shouldConvert = true
 	}
 
-	if d.limitUnit == "minutes" || shouldConvert {
+	if d.limitUnit == MinutesKey || shouldConvert {
 		minutes = remainingSecondsToConvert / (60 * 1000000)
 		remainingSecondsToConvert -= minutes * 60 * 1000000
 		shouldConvert = true
 	}
 
-	if d.limitUnit == "seconds" || shouldConvert {
+	if d.limitUnit == SecondsKey || shouldConvert {
 		seconds = remainingSecondsToConvert / 1000000
 		remainingSecondsToConvert -= seconds * 1000000
 		shouldConvert = true
 	}
 
-	if d.limitUnit == "milliseconds" || shouldConvert {
+	if d.limitUnit == MillisecondsKey || shouldConvert {
 		milliseconds = remainingSecondsToConvert / 1000
 		remainingSecondsToConvert -= milliseconds * 1000
 	}
@@ -151,14 +162,14 @@ func (d *Durafmt) String() string {
 
 	// Create a map of the converted duration time.
 	durationMap := map[string]int64{
-		"microseconds": microseconds,
-		"milliseconds": milliseconds,
-		"seconds":      seconds,
-		"minutes":      minutes,
-		"hours":        hours,
-		"days":         days,
-		"weeks":        weeks,
-		"years":        years,
+		MicrosecondsKey: microseconds,
+		MillisecondsKey: milliseconds,
+		SecondsKey:      seconds,
+		MinutesKey:      minutes,
+		HoursKey:        hours,
+		DaysKey:         days,
+		WeeksKey:        weeks,
+		YearsKey:        years,
 	}
 
 	// Construct duration string.
