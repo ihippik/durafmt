@@ -11,8 +11,8 @@ import (
 )
 
 var (
-	units      = []string{"years", "weeks", "days", "hours", "minutes", "seconds", "milliseconds", "microseconds"}
-	unitsShort = []string{"y", "w", "d", "h", "m", "s", "ms", "µs"}
+	units      = []string{"лет", "недель", "дней", "часов", "минут", "секунд", "миллисекунд", "микросекунд"}
+	unitsShort = []string{"л", "н", "в", "ч", "м", "с", "мс", "мкс"}
 )
 
 // Durafmt holds the parsed duration and the original input duration.
